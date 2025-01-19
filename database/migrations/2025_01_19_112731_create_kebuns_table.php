@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('lokasi');
             $table->integer('luas');
-            $table->string('status');
+            $table->enum('status',['aktif', 'tidak aktif'])->default('aktif');
             $table->date('tanggal_tanam');
             $table->date('tanggal_panen');
             $table->timestamps();
