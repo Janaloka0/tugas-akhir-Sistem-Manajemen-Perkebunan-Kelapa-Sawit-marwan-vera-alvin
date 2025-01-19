@@ -12,7 +12,8 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        //
+        $pengguna = pengguna::all(); // Ambil semua data pengguna
+        return view('pengguna.index', compact('pengguna'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        //
+        return view('pengguna.create');
     }
 
     /**
@@ -28,7 +29,18 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:pengguna,email',
+            'password' => 'required|string|min:8',
+            'role' => 'required|string',
+        ]);
+
+        $validated['password'] = Hash::make($validated['password']); // Hash password
+
+        Pengguna::create($validated); // Simpan data pengguna
+
+        return redirect()->route('pengguna.index')->with('success', 'pengguna berhasil ditambahkan.');
     }
 
     /**
@@ -36,7 +48,7 @@ class PenggunaController extends Controller
      */
     public function show(Pengguna $pengguna)
     {
-        //
+        return view('pengguna.show', compact('user'));
     }
 
     /**
@@ -44,7 +56,7 @@ class PenggunaController extends Controller
      */
     public function edit(Pengguna $pengguna)
     {
-        //
+        return view('pengguna.edit', compact('pengguna'));
     }
 
     /**
@@ -52,7 +64,22 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, Pengguna $pengguna)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:pengguna,email,' . $pengguna->id,
+            'password' => 'nullable|string|min:8',
+            'role' => 'required|string',
+        ]);
+
+        if ($request->password) {
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
+
+        $pengguna->update($validated); // Perbarui data pengguna
+
+        return redirect()->route('pengguna.index')->with('success', 'User berhasil diperbarui.');
     }
 
     /**
@@ -60,6 +87,9 @@ class PenggunaController extends Controller
      */
     public function destroy(Pengguna $pengguna)
     {
-        //
+        $pengguna->delete(); // Hapus data pengguna
+
+        return redirect()->route('pengguna.index')->with('success', 'User berhasil dihapus.');
+
     }
 }

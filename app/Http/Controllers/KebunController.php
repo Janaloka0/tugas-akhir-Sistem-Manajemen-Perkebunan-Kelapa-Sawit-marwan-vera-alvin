@@ -12,7 +12,8 @@ class KebunController extends Controller
      */
     public function index()
     {
-        //
+        $kebun = Kebun::all();
+        return view('kebun.index', compact('kebun'));
     }
 
     /**
@@ -20,7 +21,7 @@ class KebunController extends Controller
      */
     public function create()
     {
-        //
+        return view('kebun.create');
     }
 
     /**
@@ -28,7 +29,17 @@ class KebunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'lokasi' => 'required|string|max:255',
+            'luas' => 'required|integer',
+            'status' => 'required|string|max:255',
+            'tanggal_tanam' => 'required|date',
+            'tanggal_panen' => 'required|date',
+        ]);
+    
+        Kebun::create($request->all());
+    
+        return redirect()->route('kebun.index');
     }
 
     /**
@@ -44,7 +55,7 @@ class KebunController extends Controller
      */
     public function edit(Kebun $kebun)
     {
-        //
+        return view('kebun.edit', compact('kebun'));
     }
 
     /**
@@ -52,7 +63,17 @@ class KebunController extends Controller
      */
     public function update(Request $request, Kebun $kebun)
     {
-        //
+        $request->validate([
+            'lokasi' => 'required|string|max:255',
+            'luas' => 'required|integer',
+            'status' => 'required|string|max:255',
+            'tanggal_tanam' => 'required|date',
+            'tanggal_panen' => 'required|date',
+        ]);
+    
+        $kebun->update($request->all());
+    
+        return redirect()->route('kebun.index');
     }
 
     /**
@@ -60,6 +81,7 @@ class KebunController extends Controller
      */
     public function destroy(Kebun $kebun)
     {
-        //
+        $kebun->delete();
+        return redirect()->route('kebun.index');
     }
 }
