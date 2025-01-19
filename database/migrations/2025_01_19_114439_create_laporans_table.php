@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('laporan', function (Blueprint $table) {
             $table->id();
+            $table->string('kebun_id');
+            $table->string('file_path');
+            $table->string('file_type');
+            $table->date('tanggal_laporan');
             $table->timestamps();
         });
     }

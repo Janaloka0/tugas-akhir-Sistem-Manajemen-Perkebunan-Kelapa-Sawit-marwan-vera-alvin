@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('distribusi', function (Blueprint $table) {
-            $table->id();
-            $table->string('produksi_id');
-            $table->string('tujuan');
-            $table->integer('jumlah');
-            $table->date('tanggal_distribusi');
-            $table->timestamps();
+        Schema::table('sessions', function (Blueprint $table) {
+            //
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('distribusis');
+        Schema::table('sessions', function (Blueprint $table) {
+            //
+        });
     }
 };
