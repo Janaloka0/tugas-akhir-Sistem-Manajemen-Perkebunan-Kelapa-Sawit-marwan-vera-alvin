@@ -22,7 +22,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 // admin
 Route::middleware(['auth', CheckRole::class . ':admin'])->group(function () {
     Route::get('/admin-dashboard', function () {
-        return view('admin.dashboard');
+        return view('dashboard.admin');
     });
 
     Route::resource('pengguna', PenggunaController::class);
@@ -36,18 +36,29 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->group(function () {
 });
 
 // manajer
-Route::get('/manajer-dashboard', function () {
-    return view('manajer.dashboard');
-})->middleware(CheckRole::class.':manajer');  // Menambahkan role 'manajer' sebagai argumen untuk middleware
+Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
+    Route::get('/manajer-dashboard', function () {
+        return view('dashboard.manajer');
+    });
+
+    Route::resource('pengguna', PenggunaController::class);
+    Route::resource('kebun', KebunController::class);
+    Route::resource('petugas', PetugasController::class);
+    Route::resource('produksi', ProduksiController::class);
+    Route::resource('distribusi', DistribusiController::class);
+    Route::resource('laporan', LaporanController::class);
+    Route::resource('pembayaran', PembayaranController::class);
+    Route::resource('kategori-panen', KategoriPanenController::class);
+});  // Menambahkan role 'manajer' sebagai argumen untuk middleware
 
 Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
     Route::get('/petugas-kebun-dashboard', function () {
-        return view('petugas-kebun.dashboard');
+        return view('dashboard.petugas-kebun');
     });
 
-    // Route::resource('pengguna', PenggunaController::class);
+    Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
-    // Route::resource('petugas', PetugasController::class);
+    Route::resource('petugas', PetugasController::class);
     Route::resource('produksi', ProduksiController::class);
     Route::resource('distribusi', DistribusiController::class);
     Route::resource('laporan', LaporanController::class);
