@@ -34,5 +34,19 @@ class PenggunaSeeder extends Seeder
             'password' => Hash::make('vera1234'),
             'role' => 'petugas_kebun',
         ]);
+
+        Pengguna::create([
+            'name' => 'agnes',
+            'email' => 'agnes@example.com',
+            'password' => Hash::make('agnes1234'),
+            'role' => 'petugas_kebun',
+        ]);
+
+        Pengguna::create([
+            'name' => 'popi',
+            'email' => 'popi@example.com',
+            'password' => Hash::make('popi1234'),
+            'role' => 'petugas_kebun',
+        ]);
     }
 }
