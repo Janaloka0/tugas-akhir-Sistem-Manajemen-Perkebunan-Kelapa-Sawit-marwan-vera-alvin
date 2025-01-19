@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,12 @@ class PembayaranSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $pembayaran=[
+            ['produksi_id'=>'','jumlah_pembayaran'=>'','tanggal_pembayaran'=>'','metode_pembayaran'=>''],
+            ['produksi_id'=>'','jumlah_pembayaran'=>'','tanggal_pembayaran'=>'','metode_pembayaran'=>''],
+            ['produksi_id'=>'','jumlah_pembayaran'=>'','tanggal_pembayaran'=>'','metode_pembayaran'=>''],
+            ['produksi_id'=>'','jumlah_pembayaran'=>'','tanggal_pembayaran'=>'','metode_pembayaran'=>''],
+            ['produksi_id'=>'','jumlah_pembayaran'=>'','tanggal_pembayaran'=>'','metode_pembayaran'=>''],
+        ];
     }
 }
