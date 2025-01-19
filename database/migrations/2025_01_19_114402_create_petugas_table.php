@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('petugas', function (Blueprint $table) {
             $table->id();
-            $table->string('pengguna_id');
+            $table->unsignedBigInteger('pengguna_id');
             $table->string('nama_petugas');
             $table->string('jabatan');
             $table->date('tanggal_bergabung');
             $table->timestamps();
+
+            $table->foreign('pengguna_id')->references('pengguna_id')->on('pengguna')->onDelete('cascade');
         });
     }
 

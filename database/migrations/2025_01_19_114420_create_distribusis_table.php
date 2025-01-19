@@ -9,23 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('distribusi', function (Blueprint $table) {
             $table->id();
-            $table->string('produksi_id');
+            $table->unsignedBigInteger('produksi_id'); // Foreign key untuk produksi_id
             $table->string('tujuan');
             $table->integer('jumlah');
             $table->date('tanggal_distribusi');
             $table->timestamps();
+
+            // Menambahkan foreign key constraint untuk produksi_id
+            $table->foreign('produksi_id')->references('id')->on('produksi')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('distribusis');
+        Schema::dropIfExists('distribusi');
     }
 };

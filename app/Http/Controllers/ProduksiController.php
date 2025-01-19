@@ -12,54 +12,56 @@ class ProduksiController extends Controller
      */
     public function index()
     {
-        //
+        // Mengambil semua data produksi dengan relasi ke kebun
+        $produksi = Produksi::with('kebun')->get();
+        return view('produksi.index', compact('produksi'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        // Mengambil semua kebun untuk ditampilkan di dropdown
+        $kebun = Kebun::all();
+        return view('produksi.create', compact('kebun'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kebun_id' => 'required|exists:kebun,id',
+            'jumlah_tandan' => 'required|integer',
+            'berat_total' => 'required|numeric',
+            'tanggal_panen' => 'required|date',
+        ]);
+
+        Produksi::create($request->all());
+
+        return redirect()->route('produksi.index')->with('success', 'Produksi berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Produksi $produksi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Produksi $produksi)
     {
-        //
+        $kebun = Kebun::all();
+        return view('produksi.edit', compact('produksi', 'kebun'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Produksi $produksi)
     {
-        //
+        $request->validate([
+            'kebun_id' => 'required|exists:kebun,id',
+            'jumlah_tandan' => 'required|integer',
+            'berat_total' => 'required|numeric',
+            'tanggal_panen' => 'required|date',
+        ]);
+
+        $produksi->update($request->all());
+
+        return redirect()->route('produksi.index')->with('success', 'Produksi berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Produksi $produksi)
     {
-        //
+        $produksi->delete();
+
+        return redirect()->route('produksi.index')->with('success', 'Produksi berhasil dihapus');
     }
 }
