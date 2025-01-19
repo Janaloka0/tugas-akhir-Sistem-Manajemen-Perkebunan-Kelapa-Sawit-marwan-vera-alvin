@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Distribusi extends Model
 {
+    use HasFactory;
+
     protected $table = 'distribusi';
-    protected $fillable = ['id', 'produksi_id', 'tujuan', 'jumlah', 'tanggal_distribusi',];
+    protected $fillable = ['produksi_id', 'tujuan', 'jumlah', 'tanggal_distribusi'];
 
-
-    public function Produksi()
+    /**
+     * Relasi Many-to-One: Distribusi berhubungan dengan Produksi.
+     */
+    public function produksi()
     {
-        return $this->hasMany(Produksi::class,  'produksi_id');
+        return $this->belongsTo(Produksi::class, 'produksi_id');  // Menghubungkan dengan produksi_id di tabel distribusi
     }
 }

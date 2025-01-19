@@ -12,7 +12,8 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        //
+        $pengguna = Pengguna::all(); // Mengambil semua pengguna untuk dropdown
+        return view('petugas.create', compact('pengguna'));
     }
 
     /**
@@ -20,7 +21,8 @@ class PetugasController extends Controller
      */
     public function create()
     {
-        //
+        $pengguna = Pengguna::all();
+        return view('petugas.create', compact('pengguna'));
     }
 
     /**
@@ -28,7 +30,17 @@ class PetugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'pengguna_id' => 'required|exists:pengguna,pengguna_id',
+            'nama_petugas' => 'required',
+            'jabatan' => 'required',
+            'tanggal_bergabung' => 'required|date',
+        ]);
+
+        Petugas::create($request->all());
+
+        return redirect()->route('petugas.index')->with('success', 'Petugas berhasil ditambahkan');
+
     }
 
     /**
@@ -36,7 +48,7 @@ class PetugasController extends Controller
      */
     public function show(Petugas $petugas)
     {
-        //
+        
     }
 
     /**
@@ -44,7 +56,8 @@ class PetugasController extends Controller
      */
     public function edit(Petugas $petugas)
     {
-        //
+        $pengguna = Pengguna::all();
+        return view('petugas.edit', compact('petugas', 'pengguna'));
     }
 
     /**
@@ -52,7 +65,17 @@ class PetugasController extends Controller
      */
     public function update(Request $request, Petugas $petugas)
     {
-        //
+        $request->validate([
+            'pengguna_id' => 'required|exists:pengguna,pengguna_id',
+            'nama_petugas' => 'required',
+            'jabatan' => 'required',
+            'tanggal_bergabung' => 'required|date',
+        ]);
+
+        $petugas->update($request->all());
+
+        return redirect()->route('petugas.index')->with('success', 'Petugas berhasil diperbarui');
+   
     }
 
     /**
@@ -60,6 +83,9 @@ class PetugasController extends Controller
      */
     public function destroy(Petugas $petugas)
     {
-        //
+        $petugas->delete();
+
+        return redirect()->route('petugas.index')->with('success', 'Petugas berhasil dihapus');
+    
     }
 }
