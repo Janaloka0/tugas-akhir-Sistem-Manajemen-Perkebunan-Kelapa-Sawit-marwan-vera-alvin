@@ -11,6 +11,7 @@ Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/', [LoginController::class, 'login']);
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
+// admin
 Route::get('/admin-dashboard', function () {
     return view('admin.dashboard');
     Route::resource('users', UserController::class);
@@ -22,6 +23,8 @@ Route::get('/admin-dashboard', function () {
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('kategori-panen', KategoriPanenController::class);
 })->middleware(['auth', CheckRole::class.':admin']);  // Pastikan pengguna sudah login dan memiliki role admin
+
+// manajer
 Route::get('/manajer-dashboard', function () {
     return view('manajer.dashboard');
 })->middleware(CheckRole::class.':manajer');  // Menambahkan role 'manajer' sebagai argumen untuk middleware
