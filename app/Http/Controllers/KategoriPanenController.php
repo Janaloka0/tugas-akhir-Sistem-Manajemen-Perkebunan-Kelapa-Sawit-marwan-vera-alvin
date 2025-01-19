@@ -7,59 +7,56 @@ use Illuminate\Http\Request;
 
 class KategoriPanenController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $kategori_panen = Kategori_Panen::all();
+        return view('kategori_panen.index', compact('kategori_panen'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('kategori_panen.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        Kategori_Panen::create($request->all());
+        return redirect()->route('kategori-panen.index')->with('success', 'Kategori Panen berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Kategori_Panen $kategori_Panen)
+    public function show($id)
     {
-        //
+        $kategori_panen = Kategori_Panen::findOrFail($id);
+        return view('kategori_panen.show', compact('kategori_panen'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Kategori_Panen $kategori_Panen)
+    public function edit($id)
     {
-        //
+        $kategori_panen = Kategori_Panen::findOrFail($id);
+        return view('kategori_panen.edit', compact('kategori_panen'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Kategori_Panen $kategori_Panen)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_kategori' => 'required|string|max:255',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        $kategori_panen = Kategori_Panen::findOrFail($id);
+        $kategori_panen->update($request->all());
+        return redirect()->route('kategori-panen.index')->with('success', 'Kategori Panen berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Kategori_Panen $kategori_Panen)
+    public function destroy($id)
     {
-        //
+        $kategori_panen = Kategori_Panen::findOrFail($id);
+        $kategori_panen->delete();
+        return redirect()->route('kategori-panen.index')->with('success', 'Kategori Panen berhasil dihapus.');
     }
 }

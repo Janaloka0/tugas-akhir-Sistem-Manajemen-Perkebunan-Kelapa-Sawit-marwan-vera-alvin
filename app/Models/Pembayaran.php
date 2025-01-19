@@ -13,8 +13,10 @@ class Pembayaran extends Model
         'tanggal_pembayaran',
         'metode_pembayaran',
     ];
-    public function Produksi()
+
+    public function produksi()
     {
-        return $this->hasMany(Produksi::class, 'produksi_id', 'produksi_id');
+        return $this->belongsTo(Produksi::class, 'produksi_id', 'id');
     }
 }
+

@@ -22,7 +22,7 @@
                     <td><a href="{{ asset('storage/' . $item->file_path) }}" target="_blank">Download</a></td>
                     <td>{{ $item->tanggal_laporan }}</td>
                     <td>
-                        <a href="{{ route('laporan.edit', $item->id) }}" class="btn btn-warning">Edit</a>
+                        <!-- <a href="{{ route('laporan.edit', $item->id) }}" class="btn btn-warning">Edit</a> -->
                         <form action="{{ route('laporan.destroy', $item->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

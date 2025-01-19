@@ -1,5 +1,3 @@
-// resources/views/distribusi/index.blade.php
-
 @extends('layouts-admin.app')
 
 @section('content')
