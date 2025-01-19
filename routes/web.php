@@ -35,8 +35,22 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->group(function () {
     Route::resource('kategori-panen', KategoriPanenController::class);
 });
 
-
 // manajer
 Route::get('/manajer-dashboard', function () {
     return view('manajer.dashboard');
 })->middleware(CheckRole::class.':manajer');  // Menambahkan role 'manajer' sebagai argumen untuk middleware
+
+Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
+    Route::get('/petugas-kebun-dashboard', function () {
+        return view('petugas-kebun.dashboard');
+    });
+
+    // Route::resource('pengguna', PenggunaController::class);
+    Route::resource('kebun', KebunController::class);
+    // Route::resource('petugas', PetugasController::class);
+    Route::resource('produksi', ProduksiController::class);
+    Route::resource('distribusi', DistribusiController::class);
+    Route::resource('laporan', LaporanController::class);
+    Route::resource('pembayaran', PembayaranController::class);
+    Route::resource('kategori-panen', KategoriPanenController::class);
+});
