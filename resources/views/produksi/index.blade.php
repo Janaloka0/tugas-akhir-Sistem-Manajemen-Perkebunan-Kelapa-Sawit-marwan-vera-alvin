@@ -1,5 +1,3 @@
-// resources/views/produksi/index.blade.php
-
 @extends('layouts-admin.app')
 
 @section('content')

@@ -24,7 +24,7 @@
 
                 <!-- Tabel Kebun -->
                 <li class="nav-item">
-                    <a href="{{ route('kebun.index') }}" class="nav-link">
+                    <a href="{{ route('kebun.create') }}" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>Data Kebun</p>
                     </a>

@@ -1,5 +1,3 @@
-// resources/views/petugas/create.blade.php
-
 @extends('layouts-admin.app')
 
 @section('content')

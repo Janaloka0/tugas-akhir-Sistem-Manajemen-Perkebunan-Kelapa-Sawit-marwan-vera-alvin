@@ -51,9 +51,13 @@ Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
     Route::resource('kategori-panen', KategoriPanenController::class);
 });  // Menambahkan role 'manajer' sebagai argumen untuk middleware
 
-Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
+Route::middleware(['auth', CheckRole::class . ':petugas_kebun'])->group(function () {
     Route::get('/petugas-kebun-dashboard', function () {
+
+        
+
         return view('dashboard.petugas-kebun');
+
     });
 
     Route::resource('pengguna', PenggunaController::class);
