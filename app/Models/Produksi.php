@@ -9,6 +9,7 @@ class Produksi extends Model
 {
     use HasFactory;
 
+    protected $table = 'produksi';
     protected $fillable = ['kebun_id', 'jumlah_tandan', 'berat_total', 'tanggal_panen'];
 
     // Relasi ke kebun
