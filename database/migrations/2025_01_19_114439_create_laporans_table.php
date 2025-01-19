@@ -4,16 +4,13 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateLaporanTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('laporan', function (Blueprint $table) {
             $table->id();
-            $table->string('kebun_id');
+            $table->foreignId('kebun_id')->constrained('kebun')->onDelete('cascade');
             $table->string('file_path');
             $table->string('file_type');
             $table->date('tanggal_laporan');
@@ -21,11 +18,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('laporans');
+        Schema::dropIfExists('laporan');
     }
-};
+}

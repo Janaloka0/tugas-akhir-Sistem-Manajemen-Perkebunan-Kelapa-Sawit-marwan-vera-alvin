@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Laporan extends Model
 {
-    protected $table = 'laporan';
-    protected $fillable = ['kebun_id', 'file_path', 'file_type', 'tanggal_laporan',];
+    use HasFactory;
 
-    public function Kebun()
+    protected $table = 'laporan';
+    protected $fillable = ['kebun_id', 'file_path', 'file_type', 'tanggal_laporan'];
+
+    public function kebun()
     {
-        return $this->hasMany(Kebun::class, 'kebun_id', 'kebun_id');
+        return $this->belongsTo(Kebun::class, 'kebun_id');
     }
 }

@@ -3,63 +3,82 @@
 namespace App\Http\Controllers;
 
 use App\Models\Laporan;
+use App\Models\Kebun;
 use Illuminate\Http\Request;
 
 class LaporanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $laporan = Laporan::with('kebun')->get();
+        return view('laporan.index', compact('laporan'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $kebun = Kebun::all();
+        return view('laporan.create', compact('kebun'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kebun_id' => 'required|exists:kebun,id',
+            'file_path' => 'required|file|mimes:pdf,docx',
+            'file_type' => 'required|string',
+            'tanggal_laporan' => 'required|date',
+        ]);
+
+        $filePath = $request->file('file_path')->store('laporan_files', 'public');
+
+        Laporan::create([
+            'kebun_id' => $request->kebun_id,
+            'file_path' => $filePath,
+            'file_type' => $request->file_type,
+            'tanggal_laporan' => $request->tanggal_laporan,
+        ]);
+
+        return redirect()->route('laporan.index')->with('success', 'Laporan berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Laporan $laporan)
+
+    public function edit($id)
     {
-        //
+        $laporan = Laporan::findOrFail($id);
+        $kebun = Kebun::all();
+        return view('laporan.edit', compact('laporan', 'kebun'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Laporan $laporan)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'kebun_id' => 'required|exists:kebun,id',
+            'file_path' => 'nullable|file|mimes:pdf,docx',
+            'file_type' => 'required|string',
+            'tanggal_laporan' => 'required|date',
+        ]);
+
+        $laporan = Laporan::findOrFail($id);
+
+        if ($request->hasFile('file_path')) {
+            $filePath = $request->file('file_path')->store('laporan_files', 'public');
+            $laporan->update(['file_path' => $filePath]);
+        }
+
+        $laporan->update([
+            'kebun_id' => $request->kebun_id,
+            'file_type' => $request->file_type,
+            'tanggal_laporan' => $request->tanggal_laporan,
+        ]);
+
+        return redirect()->route('laporan.index')->with('success', 'Laporan berhasil diperbarui.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Laporan $laporan)
+    public function destroy($id)
     {
-        //
-    }
+        $laporan = Laporan::findOrFail($id);
+        $laporan->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Laporan $laporan)
-    {
-        //
+        return redirect()->route('laporan.index')->with('success', 'Laporan berhasil dihapus.');
     }
 }
