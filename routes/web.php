@@ -20,8 +20,8 @@ Route::post('/', [LoginController::class, 'login']);
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // admin
-Route::middleware(['auth', CheckRole::class . ':admin'])->group(function () {
-    Route::get('/admin-dashboard', function () {
+Route::middleware(['auth', CheckRole::class . ':admin'])->prefix('admin')->group(function () {
+    Route::get('/dashboard', function () {
         return view('dashboard.admin');
     });
 
@@ -36,7 +36,7 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->group(function () {
 });
 
 // manajer
-Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
+Route::middleware(['auth', CheckRole::class . ':manajer'])->prefix('manajer')->group(function () {
     Route::get('/manajer-dashboard', function () {
         return view('dashboard.manajer');
     });
