@@ -36,7 +36,7 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->prefix('admin')->group
 });
 
 // manajer
-Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
+Route::middleware(['auth', CheckRole::class . ':manajer'])->prefix('manajer')->group(function () {
     Route::get('/manajer-dashboard', function () {
         return view('dashboard.manajer');
     });
