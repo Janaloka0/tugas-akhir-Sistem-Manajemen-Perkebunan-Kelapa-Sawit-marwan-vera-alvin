@@ -24,9 +24,12 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->prefix('admin')->group
     Route::get('/dashboard', function () {
         return view('dashboard.admin');
     });
+    Route::resource('pengguna', PenggunaController::class);
+    Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
     Route::resource('produksi', ProduksiController::class);
     Route::resource('distribusi', DistribusiController::class);
+    Route::resource('laporan', LaporanController::class);
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('kategori-panen', KategoriPanenController::class);
 });
