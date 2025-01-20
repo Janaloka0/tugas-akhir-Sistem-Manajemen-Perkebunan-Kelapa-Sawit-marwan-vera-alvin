@@ -1,3 +1,5 @@
+@extends('layouts.app')
+
 @section('content')
     <div class="container">
         <h1 class="mb-4">Dashboard manajer</h1>
@@ -6,7 +8,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
-                        Data Kebun
+                        Data Petugas
                     </div>
                     <div class="card-body">
                         <ul>

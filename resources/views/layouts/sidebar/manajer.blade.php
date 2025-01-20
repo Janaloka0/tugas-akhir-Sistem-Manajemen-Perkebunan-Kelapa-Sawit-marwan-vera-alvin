@@ -22,22 +22,6 @@
                     </a>
                 </li>
 
-                <!-- Tabel Pengguna -->
-                <li class="nav-item">
-                    <a href="{{ route('pengguna.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>Data Pengguna</p>
-                    </a>
-                </li>
-
-                <!-- Tabel Kebun -->
-                <li class="nav-item">
-                    <a href="{{ route('kebun.index') }}" class="nav-link">
-                        <i class="nav-icon fas fa-tree"></i>
-                        <p>Data Kebun</p>
-                    </a>
-                </li>
-
                 <!-- Tabel Petugas -->
                 <li class="nav-item">
                     <a href="/petugas" class="nav-link">
@@ -75,14 +59,6 @@
                     <a href="/pembayaran" class="nav-link">
                         <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>Data Pembayaran</p>
-                    </a>
-                </li>
-
-                <!-- Tabel Kategori Panen -->
-                <li class="nav-item">
-                    <a href="/kategori-panen" class="nav-link">
-                        <i class="nav-icon fas fa-tags"></i>
-                        <p>Kategori Panen</p>
                     </a>
                 </li>
 

@@ -22,9 +22,8 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 // admin
 Route::middleware(['auth', CheckRole::class . ':admin'])->group(function () {
     Route::get('/admin-dashboard', function () {
-        return view('dashboard.admin');
+        return view('layouts.dashboard.admin');
     });
-
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
@@ -36,11 +35,10 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->group(function () {
 });
 
 // manajer
-Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
+Route::middleware(['auth', CheckRole::class . ':manajer'])->group(function () {
     Route::get('/manajer-dashboard', function () {
-        return view('dashboard.manajer');
+        return view('layouts.dashboard.manajer');
     });
-
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
@@ -53,10 +51,7 @@ Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
 
 Route::middleware(['auth', CheckRole::class . ':petugas_kebun'])->group(function () {
     Route::get('/petugas-kebun-dashboard', function () {
-
-        
-
-        return view('dashboard.petugas-kebun');
+        return view('layouts.dashboard.petugas-kebun');
 
     });
 

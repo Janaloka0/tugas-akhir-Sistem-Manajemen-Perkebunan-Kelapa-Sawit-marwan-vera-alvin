@@ -1,13 +1,14 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
     <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel -->
+        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="../../../dist/assets/img/avatar2.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="brand-text font-weight-light">{{ Auth::user()->name }}</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
         </div>
 
@@ -22,7 +23,7 @@
                     </a>
                 </li>
 
-                <!-- Tabel Pengguna -->
+                <!-- Data Pengguna -->
                 <li class="nav-item">
                     <a href="{{ route('pengguna.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
@@ -30,7 +31,7 @@
                     </a>
                 </li>
 
-                <!-- Tabel Kebun -->
+                <!-- Data Kebun -->
                 <li class="nav-item">
                     <a href="{{ route('kebun.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
@@ -38,57 +39,57 @@
                     </a>
                 </li>
 
-                <!-- Tabel Petugas -->
+                <!-- Data Petugas -->
                 <li class="nav-item">
-                    <a href="/petugas" class="nav-link">
+                    <a href="{{ route('petugas.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-tie"></i>
                         <p>Data Petugas</p>
                     </a>
                 </li>
 
-                <!-- Tabel Produksi -->
+                <!-- Data Produksi -->
                 <li class="nav-item">
-                    <a href="/produksi" class="nav-link">
+                    <a href="{{ route('produksi.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-industry"></i>
                         <p>Data Produksi</p>
                     </a>
                 </li>
 
-                <!-- Tabel Distribusi -->
+                <!-- Data Distribusi -->
                 <li class="nav-item">
-                    <a href="/distribusi" class="nav-link">
+                    <a href="{{ route('distribusi.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-truck"></i>
                         <p>Data Distribusi</p>
                     </a>
                 </li>
 
-                <!-- Tabel Laporan -->
+                <!-- Data Laporan -->
                 <li class="nav-item">
-                    <a href="/laporan" class="nav-link">
+                    <a href="{{ route('laporan.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>Data Laporan</p>
                     </a>
                 </li>
 
-                <!-- Tabel Pembayaran -->
+                <!-- Data Pembayaran -->
                 <li class="nav-item">
-                    <a href="/pembayaran" class="nav-link">
+                    <a href="{{ route('pembayaran.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>Data Pembayaran</p>
                     </a>
                 </li>
 
-                <!-- Tabel Kategori Panen -->
+                <!-- Kategori Panen -->
                 <li class="nav-item">
-                    <a href="/kategori-panen" class="nav-link">
+                    <a href="{{ route('kategori-panen.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-tags"></i>
                         <p>Kategori Panen</p>
                     </a>
                 </li>
 
+                <!-- Logout -->
                 <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>Logout</p>
                     </a>

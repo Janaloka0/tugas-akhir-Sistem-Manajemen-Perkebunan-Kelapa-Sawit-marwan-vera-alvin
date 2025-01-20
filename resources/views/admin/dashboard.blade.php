@@ -1,6 +1,6 @@
 @section('content')
     <div class="container">
-        <h1 class="mb-4">Dashboard manajer</h1>
+        <h1 class="mb-4">Dashboard admin</h1>
         <div class="row">
             <!-- Ringkasan Data -->
             <div class="col-md-6">
