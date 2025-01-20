@@ -24,13 +24,9 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->prefix('admin')->group
     Route::get('/dashboard', function () {
         return view('dashboard.admin');
     });
-
-    Route::resource('pengguna', PenggunaController::class);
-    Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
     Route::resource('produksi', ProduksiController::class);
     Route::resource('distribusi', DistribusiController::class);
-    Route::resource('laporan', LaporanController::class);
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('kategori-panen', KategoriPanenController::class);
 });
@@ -53,9 +49,6 @@ Route::middleware(['auth', CheckRole::class . ':manajer'])->prefix('manajer')->g
 
 Route::middleware(['auth', CheckRole::class . ':petugas_kebun'])->group(function () {
     Route::get('/petugas-kebun-dashboard', function () {
-
-        
-
         return view('dashboard.petugas-kebun');
 
     });
