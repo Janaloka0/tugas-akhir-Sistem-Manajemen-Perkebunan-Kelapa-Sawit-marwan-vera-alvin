@@ -34,8 +34,9 @@ Route::middleware(['auth', CheckRole::class . ':admin'])->prefix('admin')->group
     Route::resource('kategori-panen', KategoriPanenController::class);
 });
 
-// manajer
-Route::middleware(['auth', CheckRole::class . ':manajer'])->prefix('manajer')->group(function () {
+
+Route::middleware(['auth', CheckRole::class . ':'])->group(function () {
+
     Route::get('/manajer-dashboard', function () {
         return view('dashboard.manajer');
     });
