@@ -16,13 +16,15 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-        $rolesCollection = collect($role);
+        // Ubah daftar role menjadi Collection
+        $rolesCollection = collect(explode('|', $role));
 
+        // Cek apakah pengguna login dan memiliki role yang sesuai
         if (Auth::check() && $rolesCollection->contains(Auth::user()->role)) {
-            return $next($request);  // Lanjutkan jika role sesuai
+            return $next($request); // Lanjutkan request jika role cocok
         }
 
-        // Jika tidak, arahkan ke halaman login atau halaman error
+        // Jika tidak cocok, redirect ke halaman lain atau tampilkan pesan error
         return redirect('/')->withErrors('Anda tidak memiliki akses untuk halaman ini.');
-    } 
+    }
 }
