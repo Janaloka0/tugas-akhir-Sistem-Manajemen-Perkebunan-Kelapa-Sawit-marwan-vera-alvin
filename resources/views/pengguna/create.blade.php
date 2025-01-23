@@ -19,7 +19,12 @@
         </div>
         <div class="mb-3">
             <label for="role" class="form-label">Role</label>
-            <input type="text" name="role" class="form-control" id="role" required>
+            <select name="role" class="form-control" id="role" required>
+                <option value="" disabled selected>Pilih Role</option>
+                <option value="admin">Admin</option>
+                <option value="manajer">Manajer</option>
+                <option value="petugas">Petugas Kebun</option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>

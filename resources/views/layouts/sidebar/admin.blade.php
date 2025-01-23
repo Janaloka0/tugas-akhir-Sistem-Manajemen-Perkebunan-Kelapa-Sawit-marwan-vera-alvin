@@ -47,7 +47,7 @@
 
                 <!-- Tabel Petugas -->
                 <li class="nav-item">
-                    <a href="/admin/petugas" class="nav-link">
+                    <a href="{{route('petugas.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user-tie"></i>
                         <p>Data Petugas</p>
                     </a>
@@ -55,7 +55,7 @@
 
                 <!-- Tabel Produksi -->
                 <li class="nav-item">
-                    <a href="/admin/produksi" class="nav-link">
+                    <a href="{{route('produksi.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-industry"></i>
                         <p>Data Produksi</p>
                     </a>
@@ -63,7 +63,7 @@
 
                 <!-- Tabel Distribusi -->
                 <li class="nav-item">
-                    <a href="/admin/distribusi" class="nav-link">
+                    <a href="{{route('distribusi.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-truck"></i>
                         <p>Data Distribusi</p>
                     </a>
@@ -71,7 +71,7 @@
 
                 <!-- Tabel Laporan -->
                 <li class="nav-item">
-                    <a href="/admin/laporan" class="nav-link">
+                    <a href="{{route('laporan.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>Data Laporan</p>
                     </a>
@@ -79,7 +79,7 @@
 
                 <!-- Tabel Pembayaran -->
                 <li class="nav-item">
-                    <a href="/admin/pembayaran" class="nav-link">
+                    <a href="{{route('pembayaran.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>Data Pembayaran</p>
                     </a>
@@ -87,7 +87,7 @@
 
                 <!-- Tabel Kategori Panen -->
                 <li class="nav-item">
-                    <a href="/admin/kategori-panen" class="nav-link">
+                    <a href="{{route('kategori-panen.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-tags"></i>
                         <p>Kategori Panen</p>
                     </a>

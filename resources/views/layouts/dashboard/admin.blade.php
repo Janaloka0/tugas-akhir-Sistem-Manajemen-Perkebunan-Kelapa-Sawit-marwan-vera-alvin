@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
                         <ul>
-
+                            <li>Jumlah Kebun: {{ $jumlahKebun }}</li>
                         </ul>
                     </div>
                 </div>

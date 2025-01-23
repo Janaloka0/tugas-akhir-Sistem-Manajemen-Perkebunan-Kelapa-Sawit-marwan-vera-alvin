@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Kebun;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PenggunaController;
@@ -19,9 +20,10 @@ Route::post('/', [LoginController::class, 'login']);
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // admin
-Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth',CheckRole::class . ':admin'])->prefix('admin')->group(function () {
     Route::get('/', function () {
-        return view('layouts.dashboard.admin');
+        $jumlahKebun = Kebun::count();
+        return view('layouts.dashboard.admin',compact('jumlahKebun'));
     });
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
@@ -34,13 +36,12 @@ Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(functio
 });
 
 
-Route::middleware([CheckRole::class . ':manajer'])->prefix('manajer')->group(function () {
+Route::middleware(['auth',CheckRole::class . ':manajer|admin'])->prefix('manajer')->group(function () {
 
     Route::get('/', function () {
         return view('layouts.dashboard.manajer');
     });
 
-    Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
     Route::resource('produksi', ProduksiController::class);
     Route::resource('distribusi', DistribusiController::class);
@@ -49,7 +50,7 @@ Route::middleware([CheckRole::class . ':manajer'])->prefix('manajer')->group(fun
     Route::resource('kategori-panen', KategoriPanenController::class);
 });  // Menambahkan role 'manajer' sebagai argumen untuk middleware
 
-Route::middleware([CheckRole::class . ':petugas_kebun'])->prefix('petugas-kebun')->group(function () {
+Route::middleware(['auth',CheckRole::class . ':petugas_kebun|manajer|admin'])->prefix('petugas-kebun')->group(function () {
     Route::get('/', function () {
         return view('layouts.dashboard.petugas-kebun');
 
