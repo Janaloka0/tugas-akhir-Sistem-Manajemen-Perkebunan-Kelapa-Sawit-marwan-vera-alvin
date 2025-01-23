@@ -20,7 +20,7 @@
                 @if(Auth::user()->role == 'admin')
                     @include('layouts.sidebar.admin')  <!-- Sidebar untuk Admin -->
                 @elseif(Auth::user()->role == 'petugas_kebun')
-                    @include('layouts.sidebar.petugas_kebun')  <!-- Sidebar untuk Petugas Kebun -->
+                    @include('layouts.sidebar.petugas-kebun')  <!-- Sidebar untuk Petugas Kebun -->
                 @elseif(Auth::user()->role == 'manajer')
                     @include('layouts.sidebar.manajer')  <!-- Sidebar untuk Manajer -->
                 @else

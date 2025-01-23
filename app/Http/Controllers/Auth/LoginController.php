@@ -43,15 +43,18 @@ class LoginController extends Controller
                 return redirect('/admin-dashboard');
             } elseif ($user->role == 'manajer') {
                 return redirect('/manajer-dashboard');
-            } else {
-                return redirect('/petugas-kebun-dashboard');
+            } elseif ($user->role == 'petugas_kebun') {
+                return redirect('/petugas-kebun/dashboard');
+            }
+             else {
+                return redirect('/');
             }
         }
 
         // Jika login gagal, kembalikan ke halaman login dengan pesan error
         return redirect()->back()->with('error', 'Email atau password salah.');
     }
- 
+
     /**
      * Logout pengguna.
      *
