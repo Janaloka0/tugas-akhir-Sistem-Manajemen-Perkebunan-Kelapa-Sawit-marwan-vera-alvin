@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\KebunController;
 use App\Http\Controllers\DistribusiController;
@@ -52,8 +51,8 @@ Route::middleware([CheckRole::class . ':'])->prefix('manajer')->group(function (
 });  // Menambahkan role 'manajer' sebagai argumen untuk middleware
 
 Route::middleware([CheckRole::class . ':petugas_kebun'])->prefix('petugas-kebun')->group(function () {
-    Route::get('/petugas-kebun-dashboard', function () {
-        return view('dashboard.petugas-kebun');
+    Route::get('/dashboard', function () {
+        return view('layouts.dashboard.petugas-kebun');
 
     });
 
