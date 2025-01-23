@@ -12,7 +12,7 @@ use App\Models\Pengguna;  // Ganti User dengan Pengguna
 class LoginController extends Controller
 {
 
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Menampilkan form login.
@@ -40,11 +40,11 @@ class LoginController extends Controller
             $user = Auth::user();
             // Redirect berdasarkan role pengguna
             if ($user->role == 'admin') {
-                return redirect('/admin/dashboard');
+                return redirect('/admin');
             } elseif ($user->role == 'manajer') {
-                return redirect('/manajer/dashboard');
+                return redirect('/manajer');
             } elseif ($user->role == 'petugas_kebun') {
-                return redirect('/petugas-kebun/dashboard');
+                return redirect('/petugas-kebun');
             }
              else {
                 return redirect('/');

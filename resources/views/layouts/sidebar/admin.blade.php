@@ -23,7 +23,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Dashboard -->
                 <li class="nav-item">
-                    <a href="/admin-dashboard" class="nav-link">
+                    <a href="/admin" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Dashboard</p>
                     </a>
@@ -31,7 +31,7 @@
 
                 <!-- Tabel Pengguna -->
                 <li class="nav-item">
-                    <a href="/admin/pengguna" class="nav-link">
+                    <a href="{{route('pengguna.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Data Pengguna</p>
                     </a>
@@ -39,7 +39,7 @@
 
                 <!-- Tabel Kebun -->
                 <li class="nav-item">
-                    <a href="/admin/kebun" class="nav-link">
+                    <a href="{{route('kebun.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>Data Kebun</p>
                     </a>

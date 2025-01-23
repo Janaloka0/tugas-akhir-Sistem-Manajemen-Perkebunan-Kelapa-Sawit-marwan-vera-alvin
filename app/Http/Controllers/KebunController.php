@@ -13,7 +13,7 @@ class KebunController extends Controller
     public function index()
     {
         $kebun = Kebun::all();
-        return view('petugas.kebun.index', compact('kebun'));
+        return view('kebun.index', compact('kebun'));
     }
 
     /**

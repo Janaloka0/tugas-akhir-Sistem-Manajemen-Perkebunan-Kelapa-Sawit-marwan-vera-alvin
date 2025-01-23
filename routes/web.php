@@ -20,10 +20,9 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // admin
 Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('layouts.dashboard.admin');
     });
-
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
@@ -37,11 +36,10 @@ Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(functio
 
 Route::middleware([CheckRole::class . ':manajer'])->prefix('manajer')->group(function () {
 
-    Route::get('/manajer-dashboard', function () {
+    Route::get('/', function () {
         return view('layouts.dashboard.manajer');
     });
 
-    Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
     Route::resource('produksi', ProduksiController::class);
@@ -52,7 +50,7 @@ Route::middleware([CheckRole::class . ':manajer'])->prefix('manajer')->group(fun
 });  // Menambahkan role 'manajer' sebagai argumen untuk middleware
 
 Route::middleware([CheckRole::class . ':petugas_kebun'])->prefix('petugas-kebun')->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('layouts.dashboard.petugas-kebun');
 
     });
@@ -62,3 +60,4 @@ Route::middleware([CheckRole::class . ':petugas_kebun'])->prefix('petugas-kebun'
     Route::resource('laporan', LaporanController::class);
     Route::resource('kategori-panen', KategoriPanenController::class);
 });
+
