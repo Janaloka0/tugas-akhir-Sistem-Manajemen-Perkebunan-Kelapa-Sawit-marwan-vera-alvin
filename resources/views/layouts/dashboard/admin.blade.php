@@ -17,36 +17,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Statistik -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header bg-success text-white">
-                        Statistik Produksi
-                    </div>
-                    <div class="card-body">
-                        <ul>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ringkasan Jadwal Produksi dan Laporan -->
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header bg-info text-white">
-                        Jadwal Distribusi
-                    </div>
-                    <div class="card-body">
-                        <ul>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
