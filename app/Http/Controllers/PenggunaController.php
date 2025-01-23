@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengguna;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class PenggunaController extends Controller

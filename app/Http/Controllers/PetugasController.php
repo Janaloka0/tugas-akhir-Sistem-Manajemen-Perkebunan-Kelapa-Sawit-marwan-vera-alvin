@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Petugas;
-use App\Http\Controllers\Pengguna;
+use App\Models\Pengguna;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
@@ -49,7 +49,7 @@ class PetugasController extends Controller
      */
     public function show(Petugas $petugas)
     {
-        
+
     }
 
     /**
@@ -76,7 +76,7 @@ class PetugasController extends Controller
         $petugas->update($request->all());
 
         return redirect()->route('petugas.index')->with('success', 'Petugas berhasil diperbarui');
-   
+
     }
 
     /**
@@ -87,6 +87,6 @@ class PetugasController extends Controller
         $petugas->delete();
 
         return redirect()->route('petugas.index')->with('success', 'Petugas berhasil dihapus');
-    
+
     }
 }

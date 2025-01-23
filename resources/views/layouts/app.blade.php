@@ -8,7 +8,7 @@
 </head>
 <body>
     <!-- Header -->
-    @include('layouts.header')
+    {{-- @include('layouts.header') --}}
 
     <!-- Sidebar -->
     <div class="sidebar">
@@ -31,7 +31,7 @@
     </div>
 
     <!-- Footer -->
-    @include('layouts.footer')
+    {{-- @include('layouts.footer') --}}
 
     <!-- Include JS files here -->
 </body>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produksi;
+use App\Models\Kebun;
 use Illuminate\Http\Request;
 
 class ProduksiController extends Controller
