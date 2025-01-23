@@ -22,7 +22,7 @@
                 <td>{{ $petugasItem->nama_petugas }}</td>
                 <td>{{ $petugasItem->jabatan }}</td>
                 <td>{{ $petugasItem->tanggal_bergabung }}</td>
-                <td>{{ $petugasItem->pengguna->name ?? 'Tidak ada pengguna' }}</td>
+                <td>{{ $petugasItem->pengguna->id ?? 'Tidak ada pengguna' }}</td>
                 <td>
                     <a href="{{ route('petugas.edit', $petugasItem->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('petugas.destroy', $petugasItem->id) }}" method="POST" style="display:inline;">

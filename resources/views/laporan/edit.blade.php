@@ -14,14 +14,18 @@
                 @endforeach
             </select>
         </div>
+        <!-- Input untuk file path (ini akan diisi otomatis) -->
         <div class="mb-3">
-            <label for="file_path" class="form-label">File</label>
-            <input type="file" name="file_path" id="file_path" class="form-control" required>
+            <label for="file_path" class="form-label">File Path</label>
+            <input type="file" name="file_path" id="file_path" class="form-control" value="{{ old('file_path') }}" required oninput="updateFileType()">
         </div>
+
+        <!-- Input untuk file type (otomatis berdasarkan file path) -->
         <div class="mb-3">
-            <label for="file_type" class="form-label">Tipe File</label>
-            <input type="text" name="file_type" id="file_type" class="form-control" required>
+            <label for="file_type" class="form-label">File Type</label>
+            <input type="text" name="file_type" id="file_type" class="form-control" value="{{ old('file_type') }}" readonly>
         </div>
+
         <div class="mb-3">
             <label for="tanggal_laporan" class="form-label">Tanggal Laporan</label>
             <input type="date" name="tanggal_laporan" id="tanggal_laporan" class="form-control" required>

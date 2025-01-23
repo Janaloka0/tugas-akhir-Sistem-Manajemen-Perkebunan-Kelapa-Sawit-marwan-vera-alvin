@@ -15,7 +15,8 @@ class PetugasController extends Controller
     public function index()
     {
         $pengguna = Pengguna::all(); // Mengambil semua pengguna untuk dropdown
-        return view('petugas.create', compact('pengguna'));
+        $petugas = Petugas::all(); // Mengambil semua pengguna untuk dropdown
+        return view('petugas.index', compact('pengguna','petugas'));
     }
 
     /**
@@ -50,7 +51,7 @@ class PetugasController extends Controller
      */
     public function show(Petugas $petugas)
     {
-        
+
     }
 
     /**
@@ -77,7 +78,7 @@ class PetugasController extends Controller
         $petugas->update($request->all());
 
         return redirect()->route('petugas.index')->with('success', 'Petugas berhasil diperbarui');
-   
+
     }
 
     /**
@@ -88,6 +89,6 @@ class PetugasController extends Controller
         $petugas->delete();
 
         return redirect()->route('petugas.index')->with('success', 'Petugas berhasil dihapus');
-    
+
     }
 }

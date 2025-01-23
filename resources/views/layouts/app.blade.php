@@ -338,6 +338,25 @@
       const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
       sparkline3.render();
     </script>
+    {{-- file --}}
+    <script>
+        // Fungsi untuk mengupdate file type berdasarkan ekstensi dari file_path
+        function updateFileType() {
+            var filePath = document.getElementById('file_path').value;
+            var fileTypeInput = document.getElementById('file_type');
+
+            // Ekstrak ekstensi file dari file_path
+            var fileExtension = filePath.split('.').pop().toLowerCase();
+
+            // Tentukan tipe file berdasarkan ekstensi
+            var validTypes = ['pdf', 'docx', 'jpg', 'jpeg', 'png', 'txt']; // Daftar tipe file yang valid
+            if (validTypes.includes(fileExtension)) {
+                fileTypeInput.value = fileExtension; // Set file_type sesuai dengan ekstensi
+            } else {
+                fileTypeInput.value = ''; // Jika ekstensi tidak valid, kosongkan file_type
+            }
+        }
+    </script>
     <!--end::Script-->
   </body>
   <!--end::Body-->
