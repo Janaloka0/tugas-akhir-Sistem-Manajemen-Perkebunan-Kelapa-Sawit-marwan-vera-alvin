@@ -82,7 +82,7 @@
       <!--end::Sidebar-->
       <!--begin::App Main-->
       <main class="app-main">
-        @section('content')
+        @yield('content')
       </main>
       <!--end::App Main-->
       <!--begin::Footer-->
