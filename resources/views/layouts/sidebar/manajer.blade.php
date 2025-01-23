@@ -39,7 +39,7 @@
 
                 <!-- Tabel Petugas -->
                 <li class="nav-item">
-                    <a href="{{route('petugas.index')}}" class="nav-link">
+                    <a href="{{route('petugas.create')}}" class="nav-link">
                         <i class="nav-icon fas fa-user-tie"></i>
                         <p>Data Petugas</p>
                     </a>
