@@ -1,6 +1,4 @@
-// resources/views/petugas/create.blade.php
-
-@extends('layouts-admin.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">

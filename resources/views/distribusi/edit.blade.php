@@ -1,6 +1,6 @@
 <!-- resources/views/distribusi/edit.blade.php -->
 
-@extends('layouts-admin.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -14,7 +14,7 @@
             <select name="produksi_id" id="produksi_id" class="form-control" required>
                 <option value="">-- Pilih Produksi --</option>
                 @foreach($produksi as $item)
-                    <option value="{{ $item->id }}" 
+                    <option value="{{ $item->id }}"
                         {{ $item->id == $distribusi->produksi_id ? 'selected' : '' }}>
                         {{ $item->kebun->lokasi ?? 'Tidak ada kebun' }} - {{ $item->tanggal_panen }}
                     </option>

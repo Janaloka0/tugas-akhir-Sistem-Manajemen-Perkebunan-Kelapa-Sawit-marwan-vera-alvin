@@ -1,11 +1,11 @@
-@extends('layouts-admin.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
     <h1 class="mb-4">Daftar Kebun</h1>
-    
+
     <a href="{{ route('kebun.create') }}" class="btn btn-primary mb-3">Tambah Kebun</a>
-    
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -29,7 +29,7 @@
                 <td>{{ $item->tanggal_panen }}</td>
                 <td>
                     <a href="{{ route('kebun.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    
+
                     <!-- Button delete (trigger modal or confirmation) -->
                     <form action="{{ route('kebun.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                         @csrf
