@@ -21,7 +21,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 // admin
 Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard.admin');
+        return view('layouts.dashboard.admin');
     });
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
@@ -37,7 +37,7 @@ Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(functio
 Route::middleware([CheckRole::class . ':'])->prefix('manajer')->group(function () {
 
     Route::get('/manajer-dashboard', function () {
-        return view('dashboard.manajer');
+        return view('layouts.dashboard.manajer');
     });
 
     Route::resource('pengguna', PenggunaController::class);

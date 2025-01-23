@@ -12,7 +12,7 @@ use App\Models\Pengguna;  // Ganti User dengan Pengguna
 class LoginController extends Controller
 {
 
-    protected $redirectTo = '/admin-dashboard';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Menampilkan form login.
@@ -40,9 +40,9 @@ class LoginController extends Controller
             $user = Auth::user();
             // Redirect berdasarkan role pengguna
             if ($user->role == 'admin') {
-                return redirect('/admin-dashboard');
+                return redirect('/admin/dashboard');
             } elseif ($user->role == 'manajer') {
-                return redirect('/manajer-dashboard');
+                return redirect('/manajer/dashboard');
             } elseif ($user->role == 'petugas_kebun') {
                 return redirect('/petugas-kebun/dashboard');
             }
@@ -54,7 +54,7 @@ class LoginController extends Controller
         // Jika login gagal, kembalikan ke halaman login dengan pesan error
         return redirect()->back()->with('error', 'Email atau password salah.');
     }
- 
+
     /**
      * Logout pengguna.
      *

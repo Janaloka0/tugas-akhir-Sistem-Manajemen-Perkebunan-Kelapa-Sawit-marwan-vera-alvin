@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Distribusi;
+use App\Models\Produksi;
 use Illuminate\Http\Request;
 
 class DistribusiController extends Controller
@@ -14,7 +15,7 @@ class DistribusiController extends Controller
     {
         // Mengambil semua data distribusi dengan relasi ke produksi
         $distribusi = Distribusi::with('produksi')->get();
-        
+
         return view('distribusi.index', compact('distribusi'));
     }
 
@@ -38,7 +39,7 @@ class DistribusiController extends Controller
         return redirect()->route('distribusi.index')->with('success', 'Distribusi berhasil ditambahkan.');
     }
 
-    public function edit(Distribusi $distribusi)
+    public function edit(Distribusi $id)
     {
         // Ambil data distribusi yang akan diedit berdasarkan ID
         $distribusi = Distribusi::findOrFail($id);
