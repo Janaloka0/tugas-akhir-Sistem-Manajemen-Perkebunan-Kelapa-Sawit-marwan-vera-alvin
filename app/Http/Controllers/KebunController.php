@@ -13,7 +13,7 @@ class KebunController extends Controller
     public function index()
     {
         $kebun = Kebun::all();
-        return view('kebun.index', compact('kebun'));
+        return view('petugas.kebun.index', compact('kebun'));
     }
 
     /**
@@ -36,9 +36,9 @@ class KebunController extends Controller
             'tanggal_tanam' => 'required|date',
             'tanggal_panen' => 'required|date',
         ]);
-    
+
         Kebun::create($request->all());
-    
+
         return redirect()->route('kebun.index');
     }
 
@@ -70,9 +70,9 @@ class KebunController extends Controller
             'tanggal_tanam' => 'required|date',
             'tanggal_panen' => 'required|date',
         ]);
-    
+
         $kebun->update($request->all());
-    
+
         return redirect()->route('kebun.index');
     }
 

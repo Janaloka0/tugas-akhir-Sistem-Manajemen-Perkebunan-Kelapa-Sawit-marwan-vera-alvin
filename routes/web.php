@@ -23,6 +23,7 @@ Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(functio
     Route::get('/dashboard', function () {
         return view('layouts.dashboard.admin');
     });
+
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('kebun', KebunController::class);
     Route::resource('petugas', PetugasController::class);
@@ -34,7 +35,7 @@ Route::middleware([CheckRole::class . ':admin'])->prefix('admin')->group(functio
 });
 
 
-Route::middleware([CheckRole::class . ':'])->prefix('manajer')->group(function () {
+Route::middleware([CheckRole::class . ':manajer'])->prefix('manajer')->group(function () {
 
     Route::get('/manajer-dashboard', function () {
         return view('layouts.dashboard.manajer');
