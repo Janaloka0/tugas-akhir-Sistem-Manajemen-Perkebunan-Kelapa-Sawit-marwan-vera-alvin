@@ -1,4 +1,4 @@
-@extends('layouts-admin.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -24,7 +24,7 @@
                 <td>{{ $item->tanggal_pembayaran }}</td>
                 <td>{{ $item->metode_pembayaran }}</td>
                 <td>
-                    <a href="{{ route('pembayaran.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <!-- <a href="{{ route('pembayaran.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a> -->
                     <form action="{{ route('pembayaran.destroy', $item->id) }}" method="POST" style="display:inline-block;">
                         @csrf
                         @method('DELETE')
