@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container">
-
         <!-- Informasi Profil -->
         <div class="card mb-4">
             <div class="card-header bg-primary text-white">

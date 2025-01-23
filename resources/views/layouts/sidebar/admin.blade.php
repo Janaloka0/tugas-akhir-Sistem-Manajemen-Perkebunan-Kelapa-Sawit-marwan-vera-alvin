@@ -1,17 +1,24 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="../../../dist/assets/img/avatar2.png" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="brand-text font-weight-light">{{ Auth::user()->name }}</a>
-            </div>
-        </div>
-
-        <!-- Sidebar Menu -->
+<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+    <!--begin::Sidebar Brand-->
+    <div class="sidebar-brand">
+      <!--begin::Brand Link-->
+      <a href="./index.html" class="brand-link">
+        <!--begin::Brand Image-->
+        <img
+          src="../../dist/assets/img/AdminLTELogo.png"
+          alt="AdminLTE Logo"
+          class="brand-image opacity-75 shadow"
+        />
+        <!--end::Brand Image-->
+        <!--begin::Brand Text-->
+        <span class="brand-text fw-light">AdminLTE 4</span>
+        <!--end::Brand Text-->
+      </a>
+      <!--end::Brand Link-->
+    </div>
+    <!--end::Sidebar Brand-->
+    <!--begin::Sidebar Wrapper-->
+    <div class="sidebar-wrapper">
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Dashboard -->
@@ -24,7 +31,7 @@
 
                 <!-- Tabel Pengguna -->
                 <li class="nav-item">
-                    <a href="{{ route('pengguna.index') }}" class="nav-link">
+                    <a href="/admin/pengguna" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Data Pengguna</p>
                     </a>
@@ -32,7 +39,7 @@
 
                 <!-- Tabel Kebun -->
                 <li class="nav-item">
-                    <a href="{{ route('kebun.index') }}" class="nav-link">
+                    <a href="/admin/kebun" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>Data Kebun</p>
                     </a>
@@ -40,7 +47,7 @@
 
                 <!-- Tabel Petugas -->
                 <li class="nav-item">
-                    <a href="/petugas" class="nav-link">
+                    <a href="/admin/petugas" class="nav-link">
                         <i class="nav-icon fas fa-user-tie"></i>
                         <p>Data Petugas</p>
                     </a>
@@ -48,7 +55,7 @@
 
                 <!-- Tabel Produksi -->
                 <li class="nav-item">
-                    <a href="/produksi" class="nav-link">
+                    <a href="/admin/produksi" class="nav-link">
                         <i class="nav-icon fas fa-industry"></i>
                         <p>Data Produksi</p>
                     </a>
@@ -56,7 +63,7 @@
 
                 <!-- Tabel Distribusi -->
                 <li class="nav-item">
-                    <a href="/distribusi" class="nav-link">
+                    <a href="/admin/distribusi" class="nav-link">
                         <i class="nav-icon fas fa-truck"></i>
                         <p>Data Distribusi</p>
                     </a>
@@ -64,7 +71,7 @@
 
                 <!-- Tabel Laporan -->
                 <li class="nav-item">
-                    <a href="/laporan" class="nav-link">
+                    <a href="/admin/laporan" class="nav-link">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>Data Laporan</p>
                     </a>
@@ -72,7 +79,7 @@
 
                 <!-- Tabel Pembayaran -->
                 <li class="nav-item">
-                    <a href="/pembayaran" class="nav-link">
+                    <a href="/admin/pembayaran" class="nav-link">
                         <i class="nav-icon fas fa-money-check-alt"></i>
                         <p>Data Pembayaran</p>
                     </a>
@@ -80,7 +87,7 @@
 
                 <!-- Tabel Kategori Panen -->
                 <li class="nav-item">
-                    <a href="/kategori-panen" class="nav-link">
+                    <a href="/admin/kategori-panen" class="nav-link">
                         <i class="nav-icon fas fa-tags"></i>
                         <p>Kategori Panen</p>
                     </a>
@@ -98,7 +105,6 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
-</aside>
+    <!--end::Sidebar Wrapper-->
+  </aside>
