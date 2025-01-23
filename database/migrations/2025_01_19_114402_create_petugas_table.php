@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('tanggal_bergabung');
             $table->timestamps();
 
-            $table->foreign('pengguna_id')->references('pengguna_id')->on('pengguna')->onDelete('cascade');
+            $table->foreign('pengguna_id')->references('id')->on('pengguna')->onDelete('cascade');
         });
     }
 
