@@ -8,10 +8,10 @@
         <thead>
             <tr>
                 <th>No</th>
+                <th>ID</th>
                 <th>Nama Petugas</th>
                 <th>Jabatan</th>
                 <th>Tanggal Bergabung</th>
-                <th>Pengguna</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -19,10 +19,10 @@
             @foreach($petugas as $key => $petugasItem)
             <tr>
                 <td>{{ $key + 1 }}</td>
+                <td>{{ $petugasItem->pengguna->id ?? 'Tidak ada pengguna' }}</td>
                 <td>{{ $petugasItem->nama_petugas }}</td>
                 <td>{{ $petugasItem->jabatan }}</td>
                 <td>{{ $petugasItem->tanggal_bergabung }}</td>
-                <td>{{ $petugasItem->pengguna->id ?? 'Tidak ada pengguna' }}</td>
                 <td>
                     <a href="{{ route('petugas.edit', $petugasItem->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('petugas.destroy', $petugasItem->id) }}" method="POST" style="display:inline;">
