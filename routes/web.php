@@ -21,7 +21,7 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // admin
 Route::middleware(['auth',CheckRole::class . ':admin'])->group(function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         $jumlahKebun = Kebun::count();
         return view('layouts.dashboard.admin',compact('jumlahKebun'));
     });
@@ -38,7 +38,7 @@ Route::middleware(['auth',CheckRole::class . ':admin'])->group(function () {
 
 Route::middleware(['auth',CheckRole::class . ':admin|manajer'])->group(function () {
 
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return view('layouts.dashboard.manajer');
     });
 
@@ -50,7 +50,7 @@ Route::middleware(['auth',CheckRole::class . ':admin|manajer'])->group(function 
 });  // Menambahkan role 'manajer' sebagai argumen untuk middleware
 
 Route::middleware(['auth',CheckRole::class . ':petugas_kebun|manajer|admin'])->group(function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return view('layouts.dashboard.petugas-kebun');
 
     });

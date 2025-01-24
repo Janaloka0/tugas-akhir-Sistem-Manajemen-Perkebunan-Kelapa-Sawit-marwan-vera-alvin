@@ -40,11 +40,11 @@ class LoginController extends Controller
             $user = Auth::user();
             // Redirect berdasarkan role pengguna
             if ($user->role == 'admin') {
-                return redirect('/admin');
+                return redirect('/dashboard');
             } elseif ($user->role == 'manajer') {
-                return redirect('/manajer');
+                return redirect('/dashboard');
             } elseif ($user->role == 'petugas_kebun') {
-                return redirect('/petugas-kebun');
+                return redirect('/dashboard');
             }
              else {
                 return redirect('/');
