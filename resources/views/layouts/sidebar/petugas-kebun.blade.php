@@ -31,7 +31,7 @@
 
                 <!-- Tabel Kebun -->
                 <li class="nav-item">
-                    <a href="{{ route('kebun.index') }}" class="nav-link">
+                    <a href="{{ route('kebun.create') }}" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>Data Kebun</p>
                     </a>
@@ -39,7 +39,7 @@
 
                 <!-- Tabel Produksi -->
                 <li class="nav-item">
-                    <a href="{{route('produksi.index')}}" class="nav-link">
+                    <a href="{{route('produksi.create')}}" class="nav-link">
                         <i class="nav-icon fas fa-industry"></i>
                         <p>Data Produksi</p>
                     </a>
@@ -47,7 +47,7 @@
 
                 <!-- Tabel Laporan -->
                 <li class="nav-item">
-                    <a href="{{route('laporan.index')}}" class="nav-link">
+                    <a href="{{route('laporan.create')}}" class="nav-link">
                         <i class="nav-icon fas fa-file-alt"></i>
                         <p>Data Laporan</p>
                     </a>
@@ -55,7 +55,7 @@
 
                 <!-- Tabel Kategori Panen -->
                 <li class="nav-item">
-                    <a href="{{route('kategori-panen.index')}}" class="nav-link">
+                    <a href="{{route('kategori-panen.create')}}" class="nav-link">
                         <i class="nav-icon fas fa-tags"></i>
                         <p>Kategori Panen</p>
                     </a>
