@@ -7,4 +7,26 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<h1>Nama Kelompok</h1>
+<h1 style="text-align: center;">Daftar Nama Kelompok</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>NIM</th>
+                <th>Nama</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>15225001</td>
+                <td>Marwan Suhendra</td>
+            </tr>
+            <tr>
+                <td>15225004</td>
+                <td>Iltavera Paula</td>
+            </tr>
+            <tr>
+                <td>15225011</td>
+                <td>Hikmawan Alvin Zikirlah</td>
+            </tr>
+        </tbody>
+    </table>
