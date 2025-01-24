@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Laporan;
 use App\Models\Kebun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LaporanController extends Controller
 {
@@ -53,7 +54,7 @@ class LaporanController extends Controller
     {
         $request->validate([
             'kebun_id' => 'required|exists:kebun,id',
-            'file_path' => 'nullable|file|mimes:pdf,docx',
+            'file_path' => 'nullable|file|mimes:pdf,docx|max:10240',
             'file_type' => 'required|string',
             'tanggal_laporan' => 'required|date',
         ]);
@@ -61,8 +62,13 @@ class LaporanController extends Controller
         $laporan = Laporan::findOrFail($id);
 
         if ($request->hasFile('file_path')) {
+            // Hapus file lama jika ada
+            if ($laporan->file_path) {
+                Storage::disk('public')->delete($laporan->file_path);
+            }
+
             $filePath = $request->file('file_path')->store('laporan_files', 'public');
-            $laporan->update(['file_path' => $filePath]);
+            $laporan->file_path = $filePath;
         }
 
         $laporan->update([

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Petugas;
 use App\Models\Pengguna;
 use App\Http\Controllers\PenggunaController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PetugasController extends Controller
@@ -14,9 +15,8 @@ class PetugasController extends Controller
      */
     public function index()
     {
-        $pengguna = Pengguna::all(); // Mengambil semua pengguna untuk dropdown
-        $petugas = Petugas::all(); // Mengambil semua pengguna untuk dropdown
-        return view('petugas.index', compact('pengguna','petugas'));
+        $petugas = Petugas::with('pengguna')->get();
+        return view('petugas.index', compact('petugas'));
     }
 
     /**
@@ -34,7 +34,7 @@ class PetugasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pengguna_id' => 'required|exists:pengguna,pengguna_id',
+            'pengguna_id' => 'required|exists:pengguna,id',
             'nama_petugas' => 'required',
             'jabatan' => 'required',
             'tanggal_bergabung' => 'required|date',
@@ -69,7 +69,7 @@ class PetugasController extends Controller
     public function update(Request $request, Petugas $petugas)
     {
         $request->validate([
-            'pengguna_id' => 'required|exists:pengguna,pengguna_id',
+            'pengguna_id' => Auth::id(),
             'nama_petugas' => 'required',
             'jabatan' => 'required',
             'tanggal_bergabung' => 'required|date',

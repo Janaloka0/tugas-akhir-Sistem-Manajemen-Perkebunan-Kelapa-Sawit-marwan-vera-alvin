@@ -20,7 +20,7 @@ class Pengguna extends Authenticatable
         'password',
         'role',
     ];
- 
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -32,6 +32,6 @@ class Pengguna extends Authenticatable
 
     public function petugas()
     {
-        return $this->hasMany(Petugas::class, 'pengguna_id', 'pengguna_id');
+        return $this->hasMany(Petugas::class, 'pengguna_id', 'id');
     }
 }

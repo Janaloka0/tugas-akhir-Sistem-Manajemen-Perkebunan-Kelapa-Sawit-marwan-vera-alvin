@@ -15,6 +15,8 @@ return new class extends Migration
             $table->string('file_type');
             $table->date('tanggal_laporan');
             $table->timestamps();
+
+            
         });
     }
 
